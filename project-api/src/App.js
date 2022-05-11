@@ -45,7 +45,9 @@ function App() {
   }, [page])
   
   return (
-    <FavoritesProvides>
+    <FavoritesProvides value={{
+      favoritepokemons:favorites, updatingpokemons:''
+    }} >
     <div className="App">
      <Navbar/>
      <SearchBar/>
