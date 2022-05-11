@@ -43,6 +43,10 @@ function App() {
   useEffect(() =>{
       fecthinPokemonapi()
   }, [page])
+
+  useEffect(() => {
+   // need passed if loading favorites here!!!
+  },[])
   
   return (
     <FavoritesProvides value={{
