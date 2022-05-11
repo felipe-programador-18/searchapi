@@ -3,6 +3,8 @@ import './App.css'
 import { SearchPokemon, GetPokemons, GetPokemensData } from './apipokemon/api'; 
 import Navbar from './Componentes/Navbar'
 import SearchBar from './Componentes/SearchBar';
+import { FavoritesProvides } from './Contexto/FavoritePokemons';
+import { useEffect } from 'react';
 
 function App() {
   //flag (page,totalpage, loading, favorites,pokemons and notfound)
@@ -28,25 +30,29 @@ function App() {
       const promises = data.results.map(async (pokemon) => {
         return await GetPokemensData(pokemon.url)
       })    
-       
-      //variable managal all promise with commands promisses all
+      //variable manage all promise with commands promisses all
       const results = await Promise.all(promises) 
       setpokemons(results)
       setloading(false)
-    
+      setTotalPage(Math.ceil(data.count / itensTopage))
     
     }catch (error) {
-      
+       console.log('fetching is give error!!', error)
     }
   }
-
+  useEffect(() =>{
+      fecthinPokemonapi()
+  }, [page])
   
   return (
+    <FavoritesProvides>
     <div className="App">
      <Navbar/>
      <SearchBar/>
     </div>
-  );
+ 
+    </FavoritesProvides>
+ );
 }
 
 export default App;
