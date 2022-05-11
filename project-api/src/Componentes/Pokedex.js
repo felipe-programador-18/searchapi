@@ -22,7 +22,12 @@ const Pokedex = (props) =>{
   return( <div>
             <div className='pokedex-header'>
                 <h1>Pokedex:😎</h1>
-                <Pagination/>
+                <Pagination
+                  page={page+1}
+                  TotalPage= {TotalPage}
+                  onLeftClick={onLeftHaling}
+                  onRightClick ={onRightHaling}
+                />
 
               <div>
                {loading ? (<div>Loading Page ....</div> ):
