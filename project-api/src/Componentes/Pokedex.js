@@ -11,7 +11,7 @@ const Pokedex = (props) =>{
      setPage(page-1)
     }
   }
-  
+  // very interesting to make pagination!!
   const onRightHaling = () =>{
    if(page+1 !== TotalPage){
        setPage(page+1)
@@ -19,8 +19,21 @@ const Pokedex = (props) =>{
   }
  
 
-  return(
+  return( <div>
+            <div className='pokedex-header'>
+              <h1>Pokedex:😎</h1>
+              <Pagination/>
 
+              <div>
+               {loading ? (<div>Loading Page ....</div>):
+                  <div>
+                         
+
+                  </div>   }
+              </div>
+
+            </div>
+       </div>
   )
 }
 
