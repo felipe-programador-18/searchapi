@@ -41,6 +41,18 @@ function App() {
     }
   }
 
+  const updatingFavoritePokemon = (name) => {
+     const updateFavo = [...favorites]
+     const favoritepokeIndex = favorites.indexOf(name)
+     if(favoritepokeIndex >= 0){
+       updateFavo.splice(favoritepokeIndex,1)
+     }else{
+       updateFavo.push(name)
+     }
+  }
+
+
+
   const onSearchHandling = async (pokemon) => {
     if(!pokemon){
       //different of pokemon return all pokemons in fecthing!! 
@@ -71,7 +83,7 @@ function App() {
   
   return (
     <FavoritesProvides value={{
-      favoritepokemons:favorites, updatingpokemons:''
+      favoritepokemons:favorites, updatingpokemons:updatingFavoritePokemon
     }} >
     <div className="App">
      <Navbar/>
