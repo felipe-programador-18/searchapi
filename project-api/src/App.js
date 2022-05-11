@@ -15,6 +15,31 @@ function App() {
   //this working with context!!
   const [favorites, setfavorites] = useState([])
   
+  //create variable to said about how many times i want items to page!
+  const itensTopage = 25
+
+  //create all manager of api !!
+  const fecthinPokemonapi = async () => {
+    try {
+      setloading(true)
+      setfound(false)
+      //theorical i am created variable to managel promises
+      const data = await GetPokemons(itensTopage, itensTopage * page)
+      const promises = data.results.map(async (pokemon) => {
+        return await GetPokemensData(pokemon.url)
+      })    
+       
+      //variable managal all promise with commands promisses all
+      const results = await Promise.all(promises) 
+      setpokemons(results)
+      setloading(false)
+    
+    
+    }catch (error) {
+      
+    }
+  }
+
   
   return (
     <div className="App">
