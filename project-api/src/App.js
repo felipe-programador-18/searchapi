@@ -40,6 +40,27 @@ function App() {
        console.log('fetching is give error!!', error)
     }
   }
+
+  const onSearchHandling = async (pokemon) => {
+    if(!pokemon){
+      //different of pokemon return all pokemons in fecthing!! 
+      return fecthinPokemonapi()
+    }
+    setloading(true)
+    setfound(false)
+    const result = await SearchPokemon(pokemon)
+    if(!result){
+      setfound(true)
+    }else{
+      setpokemons([result])
+      setPage(0)
+      setTotalPage(0)
+    }
+    setloading(false)
+  }
+
+
+
   useEffect(() =>{
       fecthinPokemonapi()
   }, [page])
@@ -54,7 +75,7 @@ function App() {
     }} >
     <div className="App">
      <Navbar/>
-     <SearchBar/>
+     <SearchBar onSearch={onSearchHandling} />
     </div>
  
     </FavoritesProvides>
