@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 
 const SearchBar = (props) =>{
     const[search, setsearch] = useState("dito")
-    const onSearch = props 
+    const {onSearch} = props ;
     
     //inside onhandlingchange i passed e to later get value element!!!
     const OnHandlingChange = (e) => {
@@ -22,7 +22,7 @@ const SearchBar = (props) =>{
               <input placeholder='search-pokemon' onChange={OnHandlingChange} />
              </div>
              <div>
-              <button onClick={OnHandlingButton}> </button>
+              <button onClick={OnHandlingButton}> Search! </button>
              </div>
      </div>)
 }
