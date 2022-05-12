@@ -48,7 +48,8 @@ function App() {
   //this case i make first this function to connect another part code updating pokemon
 
   const loadingFavoritepokemons = () => {
-   const saveFavorites = JSON.parse(window.localStorage.getItem())
+   const saveFavorites = JSON.parse(window.localStorage.getItem(favoriteKey)) || []
+     setfavorites(saveFavorites)
   }
 
   const updatingFavoritePokemon = (name) => {
@@ -60,7 +61,7 @@ function App() {
        updateFavo.push(name)
      }
      window.localStorage.setItem(favoriteKey, JSON.stringify(updateFavo))
-     
+     setfavorites(updateFavo)
   }
 
 
@@ -90,7 +91,7 @@ function App() {
   }, [page])
 
   useEffect(() => {
-   // need passed if loading favorites here!!!
+   loadingFavoritepokemons()
   },[])
   
   return (
