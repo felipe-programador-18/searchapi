@@ -6,6 +6,10 @@ import SearchBar from './Componentes/SearchBar';
 import { FavoritesProvides } from './Contexto/FavoritePokemons';
 import { useEffect } from 'react';
 
+//this is doing connect with loanding favorite and updating favotires
+const favoriteKey = 'favorites'
+
+
 function App() {
   //flag (page,totalpage, loading, favorites,pokemons and notfound)
   const [page, setPage] = useState(0)
@@ -40,6 +44,12 @@ function App() {
        console.log('fetching is give error!!', error)
     }
   }
+  
+  //this case i make first this function to connect another part code updating pokemon
+
+  const loadingFavoritepokemons = () => {
+   const saveFavorites = JSON.parse(window.localStorage.getItem())
+  }
 
   const updatingFavoritePokemon = (name) => {
      const updateFavo = [...favorites]
@@ -49,6 +59,8 @@ function App() {
      }else{
        updateFavo.push(name)
      }
+     window.localStorage.setItem(favoriteKey, JSON.stringify(updateFavo))
+     
   }
 
 
