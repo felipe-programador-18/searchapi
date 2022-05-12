@@ -17,7 +17,7 @@ const Pokemon = (props) =>{
   return(
   <div className='pokemon-card'>
     <div className='pokemon-image-container'>
-       <img src={pokemon.name} alt={pokemon.sprint.front_default}  className='pokemon-png' />
+       <img alt={pokemon.name} src={pokemon.sprites.front_default}  className='pokemon-png' />
     </div> 
          
         <div className='card-body'>
