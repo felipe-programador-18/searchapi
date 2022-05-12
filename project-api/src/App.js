@@ -1,10 +1,10 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect   } from 'react'
 import './App.css'
 import { SearchPokemon, GetPokemons, GetPokemensData } from './apipokemon/api'; 
 import Navbar from './Componentes/Navbar'
 import SearchBar from './Componentes/SearchBar';
 import { FavoritesProvides } from './Contexto/FavoritePokemons';
-import { useEffect } from 'react';
+import Pokedex from './Componentes/Pokedex';
 
 //this is doing connect with loanding favorite and updating favotires
 const favoriteKey = 'favorites'
@@ -101,6 +101,17 @@ function App() {
     <div className="App">
      <Navbar/>
      <SearchBar onSearch={onSearchHandling} />
+     {notfound ? ( <div className='not-found'>nothing found here!</div>) : 
+      
+      <Pokedex
+      pokemons = {pokemons}
+      loading ={loading}
+      page ={page}
+      setPage ={setPage}
+       TotalPage = {TotalPage}
+      />
+      
+     }
     </div>
  
     </FavoritesProvides>
