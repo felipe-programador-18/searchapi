@@ -31,15 +31,17 @@ function App() {
       setfound(false)
       //theorical i am created variable to managel promises
       const data = await GetPokemons(itensTopage, itensTopage * page)
+      console.log(data)
       const promises = data.results.map(async (pokemon) => {
         return await GetPokemensData(pokemon.url)
       })    
       //variable manage all promise with commands promisses all
-      const results = await Promise.all(promises) 
-      setpokemons(results)
+      const newresults = await Promise.all(promises) 
+      setpokemons(newresults)
       setloading(false)
       setTotalPage(Math.ceil(data.count / itensTopage))
-    
+      
+      console.log('testing', newresults)
     }catch (error) {
        console.log('fetching is give error!!', error)
     }
