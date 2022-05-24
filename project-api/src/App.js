@@ -31,11 +31,13 @@ function App() {
       setfound(false)
       //theorical i am created variable to managel promises
       const data = await GetPokemons(itensTopage, itensTopage * page)
-      console.log(data)
-      const promises = data.results.map(async (pokemon) => {
+      console.log('here is data getpokemon',data)
+        const promises = data.results.map(async (pokemon) => {
         return await GetPokemensData(pokemon.url)
-      })    
+      })   
+       
       //variable manage all promise with commands promisses all
+      //promises
       const newresults = await Promise.all(promises) 
       setpokemons(newresults)
       setloading(false)
