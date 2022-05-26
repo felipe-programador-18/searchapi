@@ -43,7 +43,6 @@ function App() {
       setloading(false)
       setTotalPage(Math.ceil(data.count / itensTopage))
       
-      console.log('testing', newresults)
     }catch (error) {
        console.log('fetching is give error!!', error)
     }
