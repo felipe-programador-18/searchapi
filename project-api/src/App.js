@@ -31,7 +31,7 @@ function App() {
       setfound(false)
       //theorical i am created variable to managel promises
       const data = await GetPokemons(itensTopage, itensTopage * page)
-      console.log('here is data getpokemon',data)
+      console.log('here is data getpokemon',data.results)
         const promises = data.results.map(async (pokemon) => {
         return await GetPokemensData(pokemon.url)
       })   
