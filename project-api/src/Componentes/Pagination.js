@@ -2,7 +2,7 @@ import React from 'react'
 const Pagination =(props) => {
     // this way am get all state with props
     const{page,TotalPage, onLeftClick, onRightClick } = props
-    
+    console.log(TotalPage)
     return(<div>
         <button onClick={onLeftClick} >⬅</button>
         <div>{page}: {TotalPage}</div>
